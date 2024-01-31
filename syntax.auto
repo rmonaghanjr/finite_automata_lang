@@ -1,0 +1,54 @@
+// types: state, transition (8 bit character), string, int, bool
+// $<variable_name>:<type>;
+// $<variable_name>:<type> = <assignment>;
+// $<variable_name> = <assignment>;
+// #<function_name>(<arg_name>:<type>,);
+
+// <assignment> ::=
+// | nil
+// | <state_def>
+// | <transition>
+// | <string>
+// | <int>
+// | <bool>
+
+// <state_def> ::= <accept/reject> {
+// | <transition> -> <state><,/;>
+// }
+
+$q0: state = nil;
+$q1: state = nil;
+$q2: state = nil;
+
+$a: transition = 'a';
+$b: transition = 'b';
+$c: transition = 'c';
+
+
+$q0 = reject {
+    | $a -> $q0,
+    | $b -> $q1,
+    | $c -> $q2;
+};
+
+$q1 = reject {
+    | $a -> $q0,
+    | $b -> $q1,
+    | $c -> $q2;
+};
+
+$q2 = accept {
+    | $a -> $q0,
+    | $b -> $q1,
+    | $c -> $q2;
+};
+
+$str: string = "abcabcabc";
+// @@ is the apply operator
+$accepted: bool = $str @@ $q0; // accepting, string ends in 'c'
+
+if ($accepted) {
+    #print("accepted!");
+} else {
+    #print("rejected!");
+}

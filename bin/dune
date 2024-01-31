@@ -1,4 +1,5 @@
 (executable
  (public_name finite_automata_lang)
  (name main)
+ (modules main util ast)
  (libraries finite_automata_lang))
