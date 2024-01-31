@@ -1,0 +1,2 @@
+(test
+ (name test_finite_automata_lang))

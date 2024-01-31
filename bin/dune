@@ -1,0 +1,4 @@
+(executable
+ (public_name finite_automata_lang)
+ (name main)
+ (libraries finite_automata_lang))
